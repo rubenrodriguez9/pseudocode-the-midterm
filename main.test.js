@@ -2,6 +2,7 @@ const {
   capitalizeSentences,
   isValidPassword,
   makeHalfSquares,
+  countAs,
 } = require('./main.js')
 
 
@@ -74,4 +75,22 @@ describe('makeHalfSquares', () => {
   })
 })
 
+describe('countAs', () => {
+  it(`returns the number of grades that are at least 90 in the given array`, () => {
+    const grades1 = [90, 50, 63, 87, 100, 93, 76, 0];
+    const grades2 = [90, 50, 80, 87, 100, 90, 106, 110];
+    expect(countAs(grades1)).toBe(3);
+    expect(countAs(grades2)).toBe(5);
+  })
 
+  it(`does not modify the original array`, () => {
+    const originalGrades1 = [30, 50, 70, 90];
+    const originalGrades2 = [20, 80, 100, 102];
+    const grades1 = [30, 50, 70, 90];
+    const grades2 = [20, 80, 100, 102];
+    countAs(grades1)
+    countAs(grades2)
+    expect(grades1).toEqual(originalGrades1)
+    expect(grades2).toEqual(originalGrades2)
+  })
+})

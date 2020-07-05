@@ -38,7 +38,19 @@ const makeHalfSquares = function(nums) {
   return results;
 
   // or, using map
+  // (We'll be covering this soon!)
   // return nums.map((num) => num ** 2 / 2);
+}
+
+const countAs = function(grades) {
+  let count = 0;
+  for (let i = 0; i < grades.length; i++) {
+    if (grades[i] >= 90) {
+      count = count + 1;
+    }
+  }
+
+  return count;
 }
 
 
@@ -54,9 +66,14 @@ if (typeof makeHalfSquares === 'undefined') {
   makeHalfSquares = undefined;
 }
 
+if (typeof countAs === 'undefined') {
+  countAs = undefined;
+}
+
 
 module.exports = {
   capitalizeSentences,
   isValidPassword,
   makeHalfSquares,
+  countAs,
 }
