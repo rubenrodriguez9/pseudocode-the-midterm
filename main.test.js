@@ -1,6 +1,7 @@
 const {
   capitalizeSentences,
   isValidPassword,
+  makeHalfSquares,
 } = require('./main.js')
 
 
@@ -50,3 +51,27 @@ describe('isValidPassword', () => {
     expect(isValidPassword('justlongenuf')).toBe(true)
   })
 })
+
+describe('makeHalfSquares', () => {
+  it(`returns a new array where every number in the given array has been squared and then halved (divided by two)`, () => {
+    const nums1 = [6, 7, -8, 10];
+    const halfSquares1 = [18, 24.5, 32, 50];
+    const nums2 = [12, 3, 5, 3.5];
+    const halfSquares2 = [72, 4.5, 12.5, 6.125];
+    expect(makeHalfSquares(nums1)).toEqual(halfSquares1);
+    expect(makeHalfSquares(nums2)).toEqual(halfSquares2);
+  })
+
+  it(`does not modify the original array`, () => {
+    const originalNums1 = [3, 5, 7, 9];
+    const originalNums2 = [2, 8, 10, 12];
+    const nums1 = [3, 5, 7, 9];
+    const nums2 = [2, 8, 10, 12];
+    makeHalfSquares(nums1)
+    makeHalfSquares(nums2)
+    expect(nums1).toEqual(originalNums1)
+    expect(nums2).toEqual(originalNums2)
+  })
+})
+
+
