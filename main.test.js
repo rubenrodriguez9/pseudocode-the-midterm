@@ -3,6 +3,9 @@ const {
   isValidPassword,
   makeHalfSquares,
   countAs,
+  deleteMiddleLetters,
+  lastIndexOfSpace,
+  hyphenateName,
 } = require('./main.js')
 
 
@@ -92,5 +95,54 @@ describe('countAs', () => {
     countAs(grades2)
     expect(grades1).toEqual(originalGrades1)
     expect(grades2).toEqual(originalGrades2)
+  })
+})
+
+describe('deleteMiddleLetters', () => {
+  it(`deletes the middle letter from a word, returning the resulting string`, () => {
+    const str1 = 'hello';
+    const result1 = 'helo';
+    const str2 = 'goodbye';
+    const result2 = 'goobye';
+    expect(deleteMiddleLetters(str1)).toBe(result1);
+    expect(deleteMiddleLetters(str2)).toBe(result2);
+  })
+
+  it(`deletes the middle two letters from a string with an even number of characters`, () => {
+    const str1 = 'yessir';
+    const result1 = 'yeir';
+    const str2 = 'oh hello there';
+    const result2 = 'oh hel there';
+    expect(deleteMiddleLetters(str1)).toBe(result1);
+    expect(deleteMiddleLetters(str2)).toBe(result2);
+  })
+})
+
+describe('lastIndexOfSpace', () => {
+  it(`returns the last appearance of a space within the given string`, () => {
+    const str1 = 'hey you';
+    const indexOfSpace1 = 3;
+    const str2 = `what even I can't`;
+    const indexOfSpace2 = 11;
+    expect(lastIndexOfSpace(str1)).toBe(indexOfSpace1)
+    expect(lastIndexOfSpace(str2)).toBe(indexOfSpace2)
+  })
+
+  it(`returns -1 if there is no space in the string`, () => {
+    const noSpace1 = 'pizzapizza';
+    const noSpace2 = 'hardtoreadwithnospaceshuh';
+    expect(lastIndexOfSpace(noSpace1)).toBe(-1)
+    expect(lastIndexOfSpace(noSpace2)).toBe(-1)
+  })
+});
+
+describe('hyphenateName', () => {
+  it(`inserts hyphen in between first and second names in place of the space`, () => {
+    const name1 = 'Jaffe Obama'
+    const name2 = 'Kaleziq Musk'
+    const hyphenatedName1 = 'Jaffe-Obama'
+    const hyphenatedName2 = 'Kaleziq-Musk'
+    expect(hyphenateName(name1)).toBe(hyphenatedName1);
+    expect(hyphenateName(name2)).toBe(hyphenatedName2);
   })
 })
