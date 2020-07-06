@@ -145,4 +145,15 @@ describe('hyphenateName', () => {
     expect(hyphenateName(name1)).toBe(hyphenatedName1);
     expect(hyphenateName(name2)).toBe(hyphenatedName2);
   })
+
+  it(`only hyphenates the last two names`, () => {
+    const name1 = 'Colin Jaffe Obama'
+    const name2 = 'Mesuara Kaleziq Musk'
+    const name3 = 'Edward James Olmos McDonnell'
+    const hyphenatedName1 = 'Colin Jaffe-Obama'
+    const hyphenatedName2 = 'Mesuara Kaleziq-Musk'
+    const hyphenatedName3 = 'Edward James Olmos-McDonnell'
+    expect(hyphenateName(name1)).toBe(hyphenatedName1);
+    expect(hyphenateName(name2)).toBe(hyphenatedName2);
+  })
 })
